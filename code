@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<int> vec;
+
+int i, j, n;
+bool medie = true;
+
+int main()
+{
+    cin >> n;
+    vec.resize(n);
+    
+    for(auto& i : vec)
+    {
+        cin >> i;
+    }
+    
+    while(medie == true)
+    {
+        if(medie == true)
+        {
+            for(i = 0; i < n; i ++)
+            {
+                cout << vec[i] << ' ';
+            }
+        }
+        
+        medie = false;
+        
+        for(i = 0; i < n; i ++)
+        {
+            if((abs)(vec[i] % 2) == (abs)(vec[i + 1] % 2) and vec[i] != vec[i + 1] and i + 1 < n)
+            {
+                vec.insert(vec.begin() + i + 1, (vec[i] + vec[i + 1]) / 2);
+                n ++;
+                vec.resize(n);
+                i ++;
+                medie = true;
+            }
+        }
+        
+        cout << '\n';
+    }
+
+    return 0;
+}
